@@ -1,0 +1,265 @@
+{
+	"info": {
+		"_postman_id": "bced88ea-9226-4018-934f-55e8f0ed47df",
+		"name": "All about Mars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get rover images",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5bfda022-60e2-4a2c-b520-66dd4bf070d4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// setting the template string",
+							"template = `",
+							"<html>",
+							"\t<head>",
+							"\t\t<meta charset=\"utf-8\">",
+							"\t\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+							"\t\t\t\t<link href=\"https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap\" rel=\"stylesheet\">",
+							"\t\t\t\t\t<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" integrity=\"sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm\" crossorigin=\"anonymous\">",
+							"\t\t\t\t\t\t<script src=\"https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js\"></script>",
+							"\t\t\t\t\t\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\"/>",
+							"\t\t\t\t\t\t<style type=\"text/css\">",
+							"      img{",
+							"  height:200px;",
+							"  width:100%;",
+							"}",
+							"html,",
+							"body {",
+							" display: flex;",
+							"  justify-content: center;",
+							"  align-items: center;",
+							"  background-image: url(\"https://www.wallpaperup.com/uploads/wallpapers/2015/09/10/801184/12341b63eeaaebb651488398158cf1bf.jpg\");",
+							"  -webkit-background-size: cover;",
+							"  -moz-background-size: cover;",
+							"  -o-background-size: cover;",
+							"  background-size: cover;",
+							"  font-family: 'Nunito', sans-serif;",
+							"  font-weight: bold;",
+							"  font-size: 14px;",
+							"}",
+							"",
+							".item{",
+							"  padding-left:10px;",
+							"  padding-right:10px;",
+							"  padding-bottom:15px;",
+							"}",
+							".item-card{",
+							"  transition:0.5s;",
+							"  cursor:pointer;",
+							"}",
+							".item-card-title{  ",
+							"  transition:1s;",
+							"  cursor:pointer;",
+							"  margin-left:5px;",
+							"margin-top:10px;",
+							"}",
+							".item-card-title i{ ",
+							"  transition:1s;",
+							"  cursor:pointer;",
+							"}",
+							".card-title i:hover{",
+							"  transform: scale(1.25) rotate(100deg); ",
+							"  color:#18d4ca;",
+							"  ",
+							"}",
+							".card:hover{",
+							"  transform: scale(1.05);",
+							"  box-shadow: 10px 10px 15px rgba(0,0,0,0.3);",
+							"}",
+							".card-text{",
+							"margin-left: 5px;",
+							"",
+							"}",
+							".card::before, .card::after {",
+							"  position: absolute;",
+							"  transform: scale3d(0, 0, 1);",
+							"  transition: transform .3s ease-out 0s;",
+							"  background: rgba(255, 255, 255, 0.1);",
+							"  content: '';",
+							"  pointer-events: none;",
+							"}",
+							".card::before {",
+							"  transform-origin: left top;",
+							"}",
+							".card::after {",
+							"  transform-origin: right bottom;",
+							"}",
+							".card:hover::before, .card:hover::after, .card:focus::before, .card:focus::after {",
+							"  transform: scale3d(1, 1, 1);",
+							"}",
+							"",
+							".navbar-brand img{",
+							"  height: 200px;",
+							"  width:400px;",
+							"  ",
+							"}",
+							"",
+							".navbar a {",
+							"  font-size: 2.5em !important;",
+							"  color: white !important;",
+							"  margin-left:-100px !important;",
+							"}",
+							".navbar{",
+							"  margin-bottom: 20px;",
+							"}",
+							"    </style>",
+							"\t\t\t\t\t</head>",
+							"\t\t\t\t\t<body>",
+							"\t\t\t\t\t\t<div class=\"container\">",
+							"\t\t\t\t\t\t\t<nav class=\"navbar\">",
+							"\t\t\t\t\t\t\t\t<a class=\"navbar-brand\">",
+							"\t\t\t\t\t\t\t\t\t<img src=\"https://www.nasa.gov/sites/default/files/thumbnails/image/nasa-logo-web-rgb.png\" alt=\"logo\"/>",
+							"    Mars Rover Images",
+							"  ",
+							"\t\t\t\t\t\t\t\t</a>",
+							"\t\t\t\t\t\t\t</nav>",
+							"\t\t\t\t\t\t\t<div class=\"row\">",
+							"",
+							"              {{#each response}}",
+							"\t\t\t\t",
+							"\t\t\t\t\t",
+							"\t\t\t\t\t\t\t\t<div class=\"col-md-4 item\">",
+							"\t\t\t\t\t\t\t\t\t<div class=\"card text-white bg-dark item-card card-block\">",
+							"\t\t\t\t\t\t\t\t\t\t<img src={{img_src}} alt=\"Photo\">",
+							"\t\t\t\t\t\t\t\t\t\t\t<h5 class=\"item-card-title mt-3 mb-3\">{{rover.name}}</h5>",
+							"\t\t\t\t\t\t\t\t\t\t\t<p class=\"card-text\">{{camera.full_name}}</p>",
+							"\t\t\t\t\t\t\t\t\t\t\t<p class=\"card-text\">",
+							"\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fas fa-calendar-week\"></i> {{earth_date}}",
+							"\t\t\t\t\t\t\t\t\t\t\t</p>",
+							"\t\t\t\t\t\t\t\t\t\t</div>",
+							"\t\t\t\t\t\t\t\t\t</div>",
+							"                 {{/each}}",
+							"\t\t\t",
+							"\t\t\t\t\t",
+							"\t\t\t\t\t\t\t\t</div>",
+							"\t\t\t\t\t\t\t</div>",
+							"\t\t\t\t\t\t</body>",
+							"\t\t\t\t\t</html>",
+							"`;",
+							"const roverResponse=pm.response.json().photos;",
+							"// filtered out the interesting pictures, MAST does not have any interesting pictures at all",
+							"var filteredResponse=roverResponse.filter(resp=> resp.camera.name!==\"MAST\");",
+							"",
+							"// setup environment variables to send the information to slack",
+							"postman.setEnvironmentVariable(\"roverName\", `${roverResponse[0].rover.name}`);",
+							"postman.setEnvironmentVariable(\"camera\", roverResponse[0].camera.full_name);",
+							"postman.setEnvironmentVariable(\"earthDate\", roverResponse[0].earth_date);",
+							"postman.setEnvironmentVariable(\"imgSRC\", roverResponse[0].img_src);",
+							"",
+							"var roverInformation='';",
+							"switch(roverResponse[0].rover.name){",
+							"  case \"Curiosity\":",
+							"  roverInformation=\"Curiosity is a car-sized rover designed to explore Gale Crater on Mars as part of NASA's Mars Science Laboratory mission.\";",
+							"  break;",
+							"",
+							"  case \"Opportunity\":",
+							"  roverInformation=\"Opportunity was the second rover to land on Mars and begin traversing the Red Planet in search of signs of past life. The rover is still actively exploring the Martian terrain, having far outlasted her planned 90-day mission.\";",
+							"  break;",
+							"",
+							"  case \"Spirit\":",
+							"  roverInformation=\"One of two rovers launched in 2003 to explore Mars and search for signs of past life, Spirit far outlasted her planned 90-day mission. Among her myriad discoveries, Spirit found evidence that Mars was once much wetter than it is today and helped scientists better understand the Martian wind.\";",
+							"  break;",
+							"}",
+							"",
+							"postman.setEnvironmentVariable(\"roverInfo\", roverInformation);",
+							"",
+							"// set the visualizer with real data",
+							"pm.visualizer.set(template, {",
+							"    response: filteredResponse",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.nasa.gov/mars-photos/api/v1/rovers/:rover/photos?api_key={{nasaKey}}&earth_date=2020-2-6",
+					"protocol": "https",
+					"host": [
+						"api",
+						"nasa",
+						"gov"
+					],
+					"path": [
+						"mars-photos",
+						"api",
+						"v1",
+						"rovers",
+						":rover",
+						"photos"
+					],
+					"query": [
+						{
+							"key": "sol",
+							"value": "800",
+							"disabled": true
+						},
+						{
+							"key": "api_key",
+							"value": "{{nasaKey}}"
+						},
+						{
+							"key": "camera",
+							"value": "MAHLI",
+							"disabled": true
+						},
+						{
+							"key": "earth_date",
+							"value": "2020-2-6"
+						}
+					],
+					"variable": [
+						{
+							"key": "rover",
+							"value": "curiosity",
+							"type": "string",
+							"description": "The name of the rover [options: curiosity, spirit,opportunity]"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send mars to slack",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "xoxb-2551991626-1319613661633-561s565tIzwU7y0esD9Vv2qJ"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"Rover Images\",\n    \"blocks\": [\n        {\n            \"type\": \"section\",\n            \"text\": {\n                \"type\": \"mrkdwn\",\n                \"text\": \"Hey! your first serached Rover image is ready :tada:\"\n            }\n        },\n        {\n            \"type\": \"section\",\n            \"block_id\": \"section567\",\n            \"text\": {\n                \"type\": \"mrkdwn\",\n                \"text\": \":rocket: Rover Name: *{{roverName}}*  \\n\\n :mega: {{roverInfo}} \\n\\n :camera: Camera Used: *{{camera}}*\"\n            },\n            \"accessory\": {\n                \"type\": \"image\",\n                \"image_url\": \"{{imgSRC}}\",\n                \"alt_text\": \"rover image\"\n            }\n        },\n        {\n            \"type\": \"section\",\n            \"block_id\": \"section789\",\n            \"fields\": [\n                {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"Captured Date: *{{earthDate}}*\"\n                }\n            ]\n        }\n    ]\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": "https://hooks.slack.com/services/{{webHookToken}}"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

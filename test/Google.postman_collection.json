@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "140cb684-a366-4118-95d8-b8e446733856",
+		"name": "Google",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ping google",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f2c2c4c2-8617-498c-8fb7-b7e2be2ddc8f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://{{url}}"
+			},
+			"response": []
+		},
+		{
+			"name": "ping google Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e1ee2fe8-56c3-4327-8bee-e2c9ecd86d51",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://{{url}}"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
